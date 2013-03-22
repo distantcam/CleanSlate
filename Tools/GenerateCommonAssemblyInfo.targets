@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+
+    <CurrentVersion Condition=" '$(CurrentVersion)' == '' ">0.1.0</CurrentVersion>
+    <Company Condition=" '$(Company)' == '' ">Cameron MacFarland</Company>
+    <BuildNumber Condition=" '$(BuildNumber)' == '' ">0</BuildNumber>
+    <AssemblyConfig></AssemblyConfig>
+
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildProjectDirectory)..\..\..\</SolutionDir>
+
+    <ApplicationVersion>$(CurrentVersion).$(BuildNumber)</ApplicationVersion>
+
+    <BuildDependsOn>
+      GenerateCommonAssemblyInfo;
+      $(BuildDependsOn);
+    </BuildDependsOn>
+  </PropertyGroup>
+
+  <Import Project="MSBuild.Community.Tasks.targets" />
+
+  <Target Name="GenerateCommonAssemblyInfo">
+    <PropertyGroup>
+      <AssemblyConfig Condition=" '$(AssemblyConfig)' != '' ">-$(AssemblyConfig)</AssemblyConfig>
+      <BuildNumber Condition=" '$(BuildNumber)' == '0' "></BuildNumber>
+      <SemanticBuildNumber Condition=" '$(BuildNumber)' != '' ">+$(BuildNumber)</SemanticBuildNumber>
+      <FileVersionBuildNumber Condition=" '$(BuildNumber)' != '' ">.$(BuildNumber)</FileVersionBuildNumber>
+    </PropertyGroup>
+
+    <Time>
+      <Output TaskParameter="Year" PropertyName="Year" />
+    </Time>
+    <AssemblyInfo
+      CodeLanguage="CS"
+      OutputFile="$(SolutionDir)src\CommonAssemblyInfo.cs"
+      AssemblyCompany="$(Company)"
+      AssemblyCopyright="Copyright © $(Company) $(Year)"
+      AssemblyTrademark=""
+      AssemblyConfiguration="$(AssemblyConfig)"
+      AssemblyVersion="$(CurrentVersion)"
+      AssemblyFileVersion="$(CurrentVersion)$(FileVersionBuildNumber)"
+      AssemblyInformationalVersion="$(CurrentVersion)$(AssemblyConfig)$(SemanticBuildNumber)"
+    />
+  </Target>
+</Project>
