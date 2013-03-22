@@ -44,6 +44,7 @@
       <BuildCommand>$(NuGetCommand) pack CleanSlate.nuspec -o "$(ArtifactDir)" -version "$(CurrentVersion)$(SemanticAssemblyConfig)$(SemanticBuildNumber)" -symbols</BuildCommand>
     </PropertyGroup>
 
+    <MakeDir Directories="$(ArtifactDir)" />
     <Exec Command="$(BuildCommand)" WorkingDirectory="$(OutputPath)" LogStandardErrorAsError="true" />
   </Target>
   <Target Name="Rebuild" DependsOnTargets="Clean;Build" />
