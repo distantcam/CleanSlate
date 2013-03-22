@@ -1,0 +1,12 @@
+﻿<clean:CleanWindow
+    x:Class="CleanSlate.Example.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:clean="http://schemas.cleanslate.com/xaml"
+    clean:ThemeManager.ThemeTone="Normal"
+    Title="MainWindow" Height="350" Width="525"
+>
+    <Grid>
+
+    </Grid>
+</clean:CleanWindow>
