@@ -5,12 +5,15 @@
 
     <CurrentVersion Condition=" '$(CurrentVersion)' == '' ">0.1.0</CurrentVersion>
     <Company Condition=" '$(Company)' == '' ">Cameron MacFarland</Company>
-    <BuildNumber Condition=" '$(BuildNumber)' == '' ">0</BuildNumber>
-    <AssemblyConfig></AssemblyConfig>
-
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildProjectDirectory)..\..\..\</SolutionDir>
+    <BuildNumber></BuildNumber>
+    <AssemblyConfig>dev</AssemblyConfig>
 
     <ApplicationVersion>$(CurrentVersion).$(BuildNumber)</ApplicationVersion>
+
+    <SemanticAssemblyConfig Condition=" '$(AssemblyConfig)' != '' ">-$(AssemblyConfig)</SemanticAssemblyConfig>
+    <SemanticBuildNumber Condition=" '$(BuildNumber)' != '' AND '$(AssemblyConfig)' != '' ">$(BuildNumber)</SemanticBuildNumber>
+    <SemanticBuildNumber Condition=" '$(BuildNumber)' != '' AND '$(AssemblyConfig)' == '' ">.$(BuildNumber)</SemanticBuildNumber>
+    <FileVersionBuildNumber Condition=" '$(BuildNumber)' != '' ">.$(BuildNumber)</FileVersionBuildNumber>
 
     <BuildDependsOn>
       GenerateCommonAssemblyInfo;
@@ -21,13 +24,6 @@
   <Import Project="MSBuild.Community.Tasks.targets" />
 
   <Target Name="GenerateCommonAssemblyInfo">
-    <PropertyGroup>
-      <AssemblyConfig Condition=" '$(AssemblyConfig)' != '' ">-$(AssemblyConfig)</AssemblyConfig>
-      <BuildNumber Condition=" '$(BuildNumber)' == '0' "></BuildNumber>
-      <SemanticBuildNumber Condition=" '$(BuildNumber)' != '' ">+$(BuildNumber)</SemanticBuildNumber>
-      <FileVersionBuildNumber Condition=" '$(BuildNumber)' != '' ">.$(BuildNumber)</FileVersionBuildNumber>
-    </PropertyGroup>
-
     <Time>
       <Output TaskParameter="Year" PropertyName="Year" />
     </Time>
@@ -40,7 +36,7 @@
       AssemblyConfiguration="$(AssemblyConfig)"
       AssemblyVersion="$(CurrentVersion)"
       AssemblyFileVersion="$(CurrentVersion)$(FileVersionBuildNumber)"
-      AssemblyInformationalVersion="$(CurrentVersion)$(AssemblyConfig)$(SemanticBuildNumber)"
+      AssemblyInformationalVersion="$(CurrentVersion)$(SemanticAssemblyConfig)$(SemanticBuildNumber)"
     />
   </Target>
 </Project>
