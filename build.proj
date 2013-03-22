@@ -1,0 +1,40 @@
+<Project DefaultTargets="Compile" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration>Debug</Configuration>
+  </PropertyGroup>
+
+  <Target Name="FullClean" DependsOnTargets="Clean">
+    <ItemGroup>
+      <OldFiles Include="src\CommonAssemblyInfo.cs" />
+      <OldFiles Include="**\*.suo" />
+      <OldFiles Include="**\*.user" />
+      <OldFiles Include="**\*.cache" />
+      <OldFiles Include="**\*.dat" />
+
+      <ProjectFiles Include="src\**\*.*proj" />
+      <OldDirectories Include="@(ProjectFiles->'%(RootDir)%(Directory)bin')" />
+      <OldDirectories Include="@(ProjectFiles->'%(RootDir)%(Directory)obj')" />
+      <OldDirectories Include="packages\" />
+    </ItemGroup>
+
+    <Delete Files="@(OldFiles)" />
+    <RemoveDir Directories="@(OldDirectories)" />
+  </Target>
+
+  <Target Name="Clean">
+    <ItemGroup>
+      <OldArtifacts Include="artifacts\*.nupkg" />
+    </ItemGroup>
+
+    <Delete Files="@(OldArtifacts)" />
+  </Target>
+
+  <Target Name="Compile" DependsOnTargets="Clean">
+    <ItemGroup>
+      <Projects Include="*.sln" />
+    </ItemGroup>
+
+    <MSBuild Projects="@(Projects)" Targets="Rebuild" Properties="Configuration=$(Configuration)" />
+  </Target>
+
+</Project>
