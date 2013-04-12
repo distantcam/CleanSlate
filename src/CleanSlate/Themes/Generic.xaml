@@ -62,6 +62,7 @@
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Padding" Value="6,36,6,6" />
         <Setter Property="behaviours:StylizedBehaviors.Behaviors">
             <Setter.Value>
                 <behaviours:StylizedBehaviorCollection>
@@ -79,7 +80,7 @@
                     >
                         <Grid>
                             <AdornerDecorator>
-                                <ContentPresenter Margin="6,36,6,6" />
+                                <ContentPresenter Margin="{TemplateBinding Padding}" />
                             </AdornerDecorator>
                             <TextBlock Text="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8, 8, 0, 0" />
                             <Grid
