@@ -24,6 +24,9 @@
     <Libs Include="..\src\CleanSlate\bin\$(Configuration)\CleanSlate.*">
       <InProject>false</InProject>
     </Libs>
+    <SourceFiles Include="..\src\CleanSlate\**\*.cs">
+      <InProject>false</InProject>
+    </SourceFiles>
   </ItemGroup>
   <ItemGroup>
     <None Include="CleanSlate.nuspec">
@@ -37,6 +40,7 @@
   <Target Name="Build">
     <MakeDir Directories="$(OutputPath)" />
     <Copy SourceFiles="@(Libs)" DestinationFiles="@(Libs->'$(OutputPath)Lib\net40\%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(SourceFiles)" DestinationFiles="@(SourceFiles->'$(OutputPath)src\%(RecursiveDir)\%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(None)" DestinationFiles="@(None->'$(OutputPath)%(Filename)%(Extension)')" />
 
     <PropertyGroup>
