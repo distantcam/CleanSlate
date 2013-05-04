@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name="Clean">
+    <RemoveDir Directories="$(OutDir)" />
+    <RemoveDir Directories="$(ArtifactDir)" />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="ResolveReferences;_CopyFilesMarkedCopyLocal">
+
+    <ItemGroup>
+      <ReferenceSourceDirs Include="@(ProjectReference->'%(RootDir)%(Directory)')" />
+    </ItemGroup>
+    <ItemGroup> 
+      <ReferenceSourceFiles Include="%(ReferenceSourceDirs.Identity)\**\*.cs" />
+   </ItemGroup> 
+
+    <MakeDir Directories="$(OutDir)" />
+    <Copy SourceFiles="@(ReferenceSourceFiles)" DestinationFiles="@(ReferenceSourceFiles->'$(OutDir)src\%(RecursiveDir)\%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(Nuspec)" DestinationFiles="@(Nuspec->'$(OutputPath)%(Filename)%(Extension)')" />
+
+    <PropertyGroup>
+      <NuGetProperties>id=%(Nuspec.Filename);authors=$(Company)</NuGetProperties>
+      <BuildCommand>$(NuGetCommand) pack @(Nuspec) -o "$(ArtifactDir)" -properties "$(NuGetProperties)" -version "$(CurrentVersion)$(SemanticAssemblyConfig)$(SemanticBuildNumber)" -symbols</BuildCommand>
+    </PropertyGroup>
+
+    <MakeDir Directories="$(ArtifactDir)" />
+    <Exec Command="$(BuildCommand)" WorkingDirectory="$(OutputPath)" LogStandardErrorAsError="true" />
+  </Target>
+
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build" />
+
+</Project>

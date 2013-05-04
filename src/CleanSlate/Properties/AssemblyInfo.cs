@@ -37,3 +37,4 @@ using System.Windows.Markup;
 
 // Xaml Namespace Definitions
 [assembly: XmlnsDefinition("http://schemas.cleanslate.com/xaml", "CleanSlate")]
+[assembly: XmlnsDefinition("http://schemas.cleanslate.com/xaml", "CleanSlate.Behaviors")]
