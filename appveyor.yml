@@ -1,0 +1,19 @@
+configuration: Release
+
+os: Visual Studio 2015 CTP
+
+install:
+  - set PATH=C:\Program Files (x86)\MSBuild\14.0\Bin;%PATH%
+
+before_build:
+  - nuget restore src\CleanSlate.sln
+
+build:
+  parallel: true
+
+artifacts:
+  - path: src\CleanSlate\bin\Release\*.nupkg
+
+nuget:
+  account_feed: true
+  project_feed: true
