@@ -9,5 +9,53 @@
                    Width="525"
                    Height="350"
                    mc:Ignorable="d">
-	<Grid />
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Theme">
+                <MenuItem Header="Joker" />
+            </MenuItem>
+        </Menu>
+
+        <TabControl>
+            <TabItem Header="Buttons">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <Button Content="Click Me" />
+                        <Button Content="Don't Click Me" IsEnabled="False" />
+                        <ToggleButton Content="Toggle Me" />
+                        <ToggleButton Content="Toggle Me Too" IsChecked="True" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="10">
+                            <CheckBox Content="Check" IsChecked="True" />
+                            <CheckBox Content="Button" />
+                            <CheckBox Content="Disabled" IsEnabled="False" />
+                        </StackPanel>
+                        <StackPanel Margin="10">
+                            <RadioButton Content="Radio" IsChecked="True" />
+                            <RadioButton Content="Button" />
+                            <RadioButton Content="Disabled" IsEnabled="False" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10,0">
+                        <Button Style="{StaticResource ClnPrimaryLightButton}" Content="Click Me" />
+                        <Button Style="{StaticResource ClnPrimaryLightButton}" Content="Don't Click Me" IsEnabled="False" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,0">
+                        <Button Style="{StaticResource ClnPrimaryMidButton}" Content="Click Me" />
+                        <Button Style="{StaticResource ClnPrimaryMidButton}" Content="Don't Click Me" IsEnabled="False" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,0">
+                        <Button Style="{StaticResource ClnPrimaryDarkButton}" Content="Click Me" />
+                        <Button Style="{StaticResource ClnPrimaryDarkButton}" Content="Don't Click Me" IsEnabled="False" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,0">
+                        <Button Style="{StaticResource ClnSecondaryButton}" Content="Click Me" />
+                        <Button Style="{StaticResource ClnSecondaryButton}" Content="Don't Click Me" IsEnabled="False" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
 </clean:CleanWindow>

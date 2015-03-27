@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CleanSlate.Styles">
+
+    <Color x:Key="ClnLightColor">#FFFFFF</Color>
+    <Color x:Key="ClnMidColor">#E0E0E0</Color>
+    <Color x:Key="ClnDarkColor">#000000</Color>
+
+    <Color x:Key="ClnPrimaryLightColor">#C5CAE9</Color>
+    <Color x:Key="ClnPrimaryMidColor">#3F51B5</Color>
+    <Color x:Key="ClnPrimaryDarkColor">#1A237E</Color>
+
+    <Color x:Key="ClnSecondaryColor">#F50057</Color>
+
+    <Color x:Key="ClnPrimaryLightContrastColor">#000000</Color>
+    <Color x:Key="ClnPrimaryMidContrastColor">#FFFFFF</Color>
+    <Color x:Key="ClnPrimaryDarkContrastColor">#FFFFFF</Color>
+
+    <Color x:Key="ClnSecondaryContrastColor">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="ClnLightBrush" Color="{StaticResource ClnLightColor}" />
+    <SolidColorBrush x:Key="ClnMidBrush" Color="{StaticResource ClnMidColor}" />
+    <SolidColorBrush x:Key="ClnDarkBrush" Color="{StaticResource ClnDarkColor}" />
+
+    <SolidColorBrush x:Key="ClnPrimaryLightBrush" Color="{StaticResource ClnPrimaryLightColor}" />
+    <SolidColorBrush x:Key="ClnPrimaryMidBrush" Color="{StaticResource ClnPrimaryMidColor}" />
+    <SolidColorBrush x:Key="ClnPrimaryDarkBrush" Color="{StaticResource ClnPrimaryDarkColor}" />
+
+    <SolidColorBrush x:Key="ClnSecondaryBrush" Color="{StaticResource ClnSecondaryColor}" />
+
+    <SolidColorBrush x:Key="ClnPrimaryLightContrastBrush" Color="{StaticResource ClnPrimaryLightContrastColor}" />
+    <SolidColorBrush x:Key="ClnPrimaryMidContrastBrush" Color="{StaticResource ClnPrimaryMidContrastColor}" />
+    <SolidColorBrush x:Key="ClnPrimaryDarkContrastBrush" Color="{StaticResource ClnPrimaryDarkContrastColor}" />
+
+    <SolidColorBrush x:Key="ClnSecondaryContrastBrush" Color="{StaticResource ClnSecondaryContrastColor}" />
+</ResourceDictionary>

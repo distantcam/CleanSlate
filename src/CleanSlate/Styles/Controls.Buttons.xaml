@@ -1,0 +1,84 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CleanSlate.Styles">
+
+    <Style x:Key="ClnBasicButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource ClnMidBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ClnDarkBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource ClnDarkBrush}" />
+        <Setter Property="Margin" Value="1" />
+        <Setter Property="Padding" Value="5,2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Margin="{TemplateBinding Margin}">
+                        <Grid>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True" />
+                            <Border>
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="OverlayBrush" Color="Transparent" />
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+
+                                <VisualState Name="Normal" />
+
+                                <VisualState Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Duration="0:0:0" Storyboard.TargetName="OverlayBrush" Storyboard.TargetProperty="Color" To="#1fffffff" />
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation Duration="0:0:0" Storyboard.TargetName="OverlayBrush" Storyboard.TargetProperty="Color" To="#1f000000" />
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimation Duration="0:0:0" Storyboard.TargetName="OverlayBrush" Storyboard.TargetProperty="Color" To="#7fffffff" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ClnPrimaryLightButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ClnBasicButton}">
+        <Setter Property="Background" Value="{StaticResource ClnPrimaryLightBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource ClnPrimaryLightContrastBrush}" />
+    </Style>
+
+    <Style x:Key="ClnPrimaryMidButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ClnBasicButton}">
+        <Setter Property="Background" Value="{StaticResource ClnPrimaryMidBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource ClnPrimaryMidContrastBrush}" />
+    </Style>
+
+    <Style x:Key="ClnPrimaryDarkButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ClnBasicButton}">
+        <Setter Property="Background" Value="{StaticResource ClnPrimaryDarkBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource ClnPrimaryDarkContrastBrush}" />
+    </Style>
+
+    <Style x:Key="ClnSecondaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ClnBasicButton}">
+        <Setter Property="Background" Value="{StaticResource ClnSecondaryBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource ClnSecondaryContrastBrush}" />
+    </Style>
+</ResourceDictionary>
