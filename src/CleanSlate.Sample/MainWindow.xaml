@@ -56,6 +56,15 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
+
+            <TabItem Header="TextBox">
+                <StackPanel>
+                    <TextBox Text="Edit Me" />
+                    <TextBox Text="Can't Edit Me" IsEnabled="False" />
+                    <TextBox Text="Can't Edit Me" IsReadOnly="True" />
+                    <TextBox Text="{Binding NotBlank, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                </StackPanel>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </clean:CleanWindow>

@@ -3,7 +3,26 @@
                     xmlns:local="clr-namespace:CleanSlate.Styles">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/CleanSlate;component/Styles/Controls.Buttons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/CleanSlate;component/Styles/Controls.Textboxes.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="Button" BasedOn="{StaticResource ClnBasicButton}" />
+    <Style TargetType="TextBox" BasedOn="{StaticResource ClnBasicTextBox}" />
+
+    <ControlTemplate x:Key="TextBoxBaseControlTemplate1" TargetType="{x:Type TextBoxBase}">
+        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="border" Value="0.56" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>

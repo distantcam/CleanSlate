@@ -8,6 +8,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{DynamicResource ClnDarkBrush}" />
         <Setter Property="Margin" Value="1" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Padding" Value="5,2" />
         <Setter Property="Template">
             <Setter.Value>
@@ -15,7 +16,8 @@
                     <Border BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}"
-                            Margin="{TemplateBinding Margin}">
+                            Margin="{TemplateBinding Margin}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid>
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
